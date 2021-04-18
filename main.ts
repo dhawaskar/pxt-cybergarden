@@ -20,7 +20,7 @@ const enum DistanceUnit {
  */
 
 
-//% color=#33acff icon="\u27BE"
+//% color=#33acff icon="\u1F344"
 namespace cyberGarden {
 
   //Start of CCS811 air quality sensor 
