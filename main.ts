@@ -220,7 +220,7 @@ namespace cyberGarden {
      * Reads the temp from the BME sensor and uses compensation for calculator temperature.
      * Returns 4 digit number. Value should be devided by 100 to get DegC
      */
-    //% weight=43 blockGap=8 blockId="weatherbit_temperature" block="temperature(C)"
+    //% weight=43 blockGap=8 blockId="temperature" block="temperature(C)"
     export function temperature(): number {
         // Read the temperature registers
         let tempRegM = readBMEReg(tempMSB, NumberFormat.UInt16BE)
@@ -234,7 +234,7 @@ namespace cyberGarden {
      * Reads the humidity from the BME sensor and uses compensation for calculating humidity.
      * returns a 5 digit number. Value should be divided by 1024 to get % relative humidity. 
      */
-    //% weight=41 blockGap=8 blockId="weatherbit_humidity" block="humidity"
+    //% weight=41 blockGap=8 blockId="humidity" block="humidity"
     export function humidity(): number {
         // Read the pressure registers
         let humReg = readBMEReg(humMSB, NumberFormat.UInt16BE)
@@ -260,7 +260,7 @@ namespace cyberGarden {
     /**
      * Sets up BME for in Environment Monitoring Mode.
      */
-    //% weight=44 blockGap=8 blockId="weatherbit_setupBME280" block="start weather monitoring"
+    //% weight=44 blockGap=8 blockId="setupBME280" block="start environment monitoring"
     export function startEnvironmentMonitoring(): void {
         if (environmentMonitorStarted) return;
 
@@ -270,7 +270,7 @@ namespace cyberGarden {
         // Instantiate buffer that holds the pressure compensation values
         digPBuf = pins.createBuffer(18)
 
-        // Set up the BME in weather monitoring mode
+        // Set up the BME in environment monitoring mode
         WriteBMEReg(ctrlHum, 0x01)
         WriteBMEReg(ctrlMeas, 0x27)
         WriteBMEReg(config, 0)
@@ -403,7 +403,7 @@ namespace cyberGarden {
      * Reads the Moisture Level from the Soil Moisture Sensor.
 	 * Returns a value between 0 and 1023. 0 being dry and 1023 being wet.     
      */
-    //% weight=11 blockGap=8 blockId="weatherbit_soilMoisture" block="soil moisture"
+    //% weight=11 blockGap=8 blockId="soilMoisture" block="soil moisture"
     export function soilMoisture(): number {
         let soilMoisture = 0
         soilMoisture = pins.analogReadPin(AnalogPin.P1)
